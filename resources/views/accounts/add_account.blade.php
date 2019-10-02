@@ -6,6 +6,7 @@
 <script src="{{asset('global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
 <script src="{{ asset('global_assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
 <script src="{{asset('global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
+<script src="{{asset('global_assets/js/demo_pages/form_checkboxes_radios.js')}}"></script>
 
 <div class="row">
 	<div class="col-md-12">
@@ -24,144 +25,73 @@
 			<form method="post" action="{{ route('save_accounts')}}" id="add_accounts_form">
 				{{ csrf_field() }}
 				<div class="row">
-					<div class="col-md-2 offset-md-3">
+					<div class="col-md-2">
 						<span class="input-group-text">
-							<p>Activation</p>
+							<p>Item Name:</p>
 						</span>
 					</div>
-					<div class="col-md-3">
-						<div class="form-check form-check-switch form-check-switch-left">
-							<label class="form-check-label d-flex align-items-center">
-								<input type="checkbox" data-on-text="On" data-off-text="Off" class="form-check-input-switch" data-size="small" checked>
-
-							</label>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2 offset-md-3">
-						<span class="input-group-text">
-							<p>Account ID</p>
-						</span>
-					</div>
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<input type="text" name="account_id" class="form-control" maxlength="8">
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-2 offset-md-3">
-						<span class="input-group-text">
-							<p>Account Type</p>
-						</span>
+					<div class="col-md-2">
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input-styled" name="stacked-radio-left" checked data-fouc>
+								<span class="input-group-text">
+									<p>Quantity</p>
+								</span>
+							</label>
+						</div>
 					</div>
-					<div class="col-md-3">
-
-						<select class="select_select2" name="account_type">
-							@foreach($account_type as $type)
-							<!-- <option value="{{ $type->id }}"><span>{{ $type->description }}</span></option> -->
-							@endforeach
-							<option value="Customer">Customer</option>
-						</select>
+					<div class="col-md-2">
+						<input type="text" name="account_id" class="form-control" maxlength="8">
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-2 offset-md-3">
+					<div class="col-md-2">
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input-styled" name="stacked-radio-left" checked data-fouc>
+								<span class="input-group-text">
+									<p>Foot</p>
+								</span>
+							</label>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<input type="text" name="account_id" class="form-control" maxlength="8">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
 						<span class="input-group-text">
-							<p>Company Name</p>
+							<p>Price:</p>
 						</span>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<input type="text" name="account_name" class="form-control">
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-2 offset-md-3">
+					<div class="col-md-2">
 						<span class="input-group-text">
-							<p>Address</p>
+							<p>Discount:</p>
 						</span>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<input type="text" name="address" class="form-control">
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-2 offset-md-3">
+					<div class="col-md-2">
 						<span class="input-group-text" ]>
-							<p>Address 2</p>
+							<p>Pending Item:</p>
 						</span>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<input type="text" name="address2" class="form-control">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2 offset-md-3">
-						<span class="input-group-text">
-							<p>City</p>
-						</span>
-					</div>
-					<div class="col-md-3">
-						<input type="text" name="city" class="form-control">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2 offset-md-3">
-						<span class="input-group-text">
-							<p>State</p>
-						</span>
-					</div>
-					<div class="col-md-3">
-						<input type="text" name="state" class="form-control">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2 offset-md-3">
-						<span class="input-group-text">
-							<p>Zip</p>
-						</span>
-					</div>
-					<div class="col-md-3">
-						<input type="text" name="zip" class="form-control">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2 offset-md-3">
-						<span class="input-group-text">
-							<p>Phone</p>
-						</span>
-					</div>
-					<div class="col-md-3">
-						<input type="text" name="phone" class="form-control">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2 offset-md-3">
-						<span class="input-group-text">
-							<p>Fax</p>
-						</span>
-					</div>
-					<div class="col-md-3">
-						<input type="text" name="fax" class="form-control">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2 offset-md-3">
-						<span class="input-group-text">
-							<p>Email</p>
-						</span>
-					</div>
-					<div class="col-md-3">
-						<input type="text" name="email" class="form-control">
-					</div>
-				</div>
-				<div class="row form-group">
-					<div class="col-md-2 offset-md-3">
-						<span class="input-group-text">
-							<p>Notes</p>
-						</span>
-					</div>
-					<div class="col-md-3">
-						<input type="text" name="note" class="form-control">
 					</div>
 				</div>
 				<div class="row text-center">
