@@ -62,7 +62,7 @@ $user_role = DB::table('user_roles')
     <body>
 
 <!-- Main navbar -->
-<div class="navbar navbar-expand-md navbar-dark bg-black navbar-static">
+<div class="navbar navbar-expand-md navbar-dark navbar-static" style="background-color: #263238;">
       <div class="navbar-brand"> <img src="" alt=""> </div>
       <div class="d-md-none">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile"> <i class="icon-tree5"></i> </button>
@@ -99,7 +99,7 @@ $user_role = DB::table('user_roles')
       <?php if (Auth::user()->user_role != 3 && Auth::user()->user_role != 4 ) { ?>
       @section('sidebar') 
       <!-- Main sidebar -->
-      <div class="sidebar sidebar-light sidebar-main sidebar-expand-md"> 
+      <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md"> 
     
     <!-- Sidebar mobile toggler -->
     <div class="sidebar-mobile-toggler text-center"> <a href="#" class="sidebar-mobile-main-toggle"> <i class="icon-arrow-left8"></i> </a> <span class="font-weight-semibold">Navigation</span> <a href="#" class="sidebar-mobile-expand"> <i class="icon-screen-full"></i> <i class="icon-screen-normal"></i> </a> </div>
