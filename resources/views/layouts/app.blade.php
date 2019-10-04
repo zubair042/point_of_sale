@@ -20,7 +20,7 @@ $user_role = DB::table('user_roles')
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    <title> Wheel Tire @yield('title')</title>
+    <title> Point of Sale @yield('title')</title>
 
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -62,8 +62,8 @@ $user_role = DB::table('user_roles')
     <body>
 
 <!-- Main navbar -->
-<div class="navbar navbar-expand-md navbar-dark bg-indigo navbar-static">
-      <div class="navbar-brand"> <img src="{{asset('')}}global_assets/images/wheel_app_logo.png" alt=""> </div>
+<div class="navbar navbar-expand-md navbar-dark bg-black navbar-static">
+      <div class="navbar-brand"> <img src="" alt=""> </div>
       <div class="d-md-none">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile"> <i class="icon-tree5"></i> </button>
     <button class="navbar-toggler sidebar-mobile-main-toggle" type="button"> <i class="icon-paragraph-justify3"></i> </button>
