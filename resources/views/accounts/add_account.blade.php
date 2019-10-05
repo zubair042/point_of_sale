@@ -9,7 +9,7 @@
 <script src="{{asset('global_assets/js/demo_pages/form_checkboxes_radios.js')}}"></script>
 
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-5">
 		<div class="card">
 			<div class="page-header-content header-elements-inline">
 				<div class="page-title">
@@ -108,7 +108,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-7">
 		<div class="card">
 			<div class="page-header-content header-elements-inline">
 				<div class="page-title">
@@ -117,8 +117,29 @@
 			</div>
 			<hr style="border: 1px solid grey;">
 			<div class="card-body">
-				<div class="row">
-					
+				<div class=" card-table table-responsive shadow-0 mb-0">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Item Name</th>
+								<th>Quantity</th>
+								<th>Foot</th>
+								<th>Price</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Eugene</td>
+								<td>Kopyov</td>
+								<td>@Kopyov</td>
+								<td>@Kopyov</td>
+								<td>@Kopyov</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -131,27 +152,17 @@
 	$('.select_select2').select2({
 		minimumResultsForSearch: Infinity
 	});
-	// $('#quantity').on('change',function(){
-	// 	if ($(this).prop('checked', true)) {
-	// 		$('#quantity_input').removeAttr('readonly');
-	// 		$('#foot_input').attr('readonly');
-	// 	}else {
-	// 		$('#quantity_input').attr('readonly');
-	// 	}
-		
-	// });
+	
 	$('#quantity, #foot').change(function () {
-   if (this.id == 'quantity') {
-      $('.quantity_text').show();
-      $('.foot_text').hide();
-   }
-   else if (this.id == 'foot') {
-      $('.foot_text').show();
-      $('.quantity_text').hide();
-   }else{
-
-   }
-});
+	   if (this.id == 'quantity') {
+	      $('.quantity_text').show();
+	      $('.foot_text').hide();
+	   }
+	   else if (this.id == 'foot') {
+	      $('.foot_text').show();
+	      $('.quantity_text').hide();
+	   }
+	});
 	function resetForm() {
 		//alert();
 		document.getElementById("add_accounts_form").reset();
