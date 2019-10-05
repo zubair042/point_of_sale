@@ -168,6 +168,7 @@
 		$('#list_item_div').append('<tr id="list_item_row_'+counter+'"><td>'+counter+'</td><td>'+name+'</td><td>'+quantity+'</td><td>'+foot+'</td><td>'+price+'</td><td><a href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i class="mi-delete mr-3 mi-2x" style="color: red;"></i></a></td></tr>');
 		counter = parseInt(counter)+1;
 		$("input[name=counter]").val(counter);
+		document.getElementById("add_accounts_form").reset();
 	}
 	function remove(id){
 		$('#list_item_row_'+id+'').remove();
