@@ -47,12 +47,24 @@
 							</div>
 						</div>
 					</div>
-					<div class="row form-group">
-						<div class="col-md-6">
-							<input type="number" class="form-control" id="quantity_input" name="license_no" placeholder="Quantity" readonly="">
+					<div class="row quantity_text" style="display: none">
+						<div class="col-md-3">
+							<span class="input-group-text">
+								<p>Add Quantity:</p>
+							</span>
 						</div>
-						<div class="col-md-6">
-							<input type="number" class="form-control" id="foot_input" name="license_no" placeholder="Foot" readonly="">
+						<div class="col-md-9">
+							<input type="number" name="" class="form-control">
+						</div>
+					</div>
+					<div class="row foot_text" style="display: none;"> 
+						<div class="col-md-3">
+							<span class="input-group-text">
+								<p>Add Foot:</p>
+							</span>
+						</div>
+						<div class="col-md-9">
+							<input type="number" name="" class="form-control">
 						</div>
 					</div>
 					<div class="row">
@@ -104,6 +116,11 @@
 				</div>
 			</div>
 			<hr style="border: 1px solid grey;">
+			<div class="card-body">
+				<div class="row">
+					
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -114,28 +131,27 @@
 	$('.select_select2').select2({
 		minimumResultsForSearch: Infinity
 	});
-	$('#quantity').on('change',function(){
-		if ($(this).prop('checked', true)) {
-			$('#quantity_input').removeAttr('readonly');
-			$('#foot_input').attr('readonly');
-		}else {
-			$('#quantity_input').attr('readonly');
-		}
-		
-	});
-	// $('#foot').on('change',function(){
+	// $('#quantity').on('change',function(){
 	// 	if ($(this).prop('checked', true)) {
-	// 		$('#foot_input').removeAttr('readonly');
-	// 	}else{
+	// 		$('#quantity_input').removeAttr('readonly');
 	// 		$('#foot_input').attr('readonly');
+	// 	}else {
+	// 		$('#quantity_input').attr('readonly');
 	// 	}
+		
 	// });
-	// $(document).ready(function() {
-	//     $('#quantity input:radio').change(function() {
-	//        alert('ole');
-	//     });
-	// });
+	$('#quantity, #foot').change(function () {
+   if (this.id == 'quantity') {
+      $('.quantity_text').show();
+      $('.foot_text').hide();
+   }
+   else if (this.id == 'foot') {
+      $('.foot_text').show();
+      $('.quantity_text').hide();
+   }else{
 
+   }
+});
 	function resetForm() {
 		//alert();
 		document.getElementById("add_accounts_form").reset();
