@@ -45,6 +45,8 @@ class Accounts extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
+        echo "<pre>"; print_r($request);exit;
         $account = new Account;
         $account->created_by = Auth::user()->id;
         $account->id = $request->input('account_id');

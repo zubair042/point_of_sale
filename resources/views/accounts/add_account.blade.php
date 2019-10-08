@@ -19,7 +19,7 @@
 			</div>
 			<hr style="border: 1px solid grey;">
 			<div class="card-body">
-				<form method="post" action="{{ route('save_accounts')}}" id="add_accounts_form">
+				<form method="post"  id="add_accounts_form">
 					{{ csrf_field() }}
 					<input type="hidden" name="counter" value="1">
 					<div class="row form-group">
@@ -29,7 +29,7 @@
 							</span>
 						</div>
 						<div class="col-md-9">
-							<input type="text" name="item_name" id="item_name" class="form-control" maxlength="8">
+							<input type="text" id="item_name" class="form-control" maxlength="8">
 						</div>
 					</div>
 					<div class="row text-center">
@@ -104,7 +104,7 @@
 							<button type="submit" class="btn btn-success legitRipple"><i class="icon-checkmark mr-2"></i>Total</button>
 							<button type="button" class="btn btn-danger legitRipple" onclick="resetForm();"><i class="icon-reset mr-2"></i>Reset</button>
 							<button type="button" onclick="add_item();" class="btn btn-primary legitRipple"><i class="icon-arrow-up-right32 mr-2"></i>Add Item</button>
-						</div>
+						</div> 
 					</div>
 				</form>
 			</div>
@@ -120,21 +120,27 @@
 			<hr style="border: 1px solid grey;">
 			<div class="card-body">
 				<div class=" card-table table-responsive shadow-0 mb-0">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Item Name</th>
-								<th>Quantity</th>
-								<th>Foot</th>
-								<th>Price</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody id="list_item_div">
-
-						</tbody>
-					</table>
+					<form method="post" id="test_form">
+						{{ csrf_field() }}
+						<table class="table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Item Name</th>
+									<th>Quantity</th>
+									<th>Foot</th>
+									<th>Price</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							
+							<tbody id="list_item_div">
+									
+									<button type="submit" >submit</button>
+								
+							</tbody>
+						</table>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -165,7 +171,7 @@
 		var quantity = $('#quantity_input').val();
 		var foot = $('#foot_input').val();
 		var price = $('#price').val();
-		$('#list_item_div').append('<tr id="list_item_row_'+counter+'"><td>'+counter+'</td><td>'+name+'</td><td>'+quantity+'</td><td>'+foot+'</td><td>'+price+'</td><td><a href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i class="mi-delete mr-3 mi-2x" style="color: red;"></i></a></td></tr>');
+		$('#list_item_div').append('<tr id="list_item_row_'+counter+'"><td>'+counter+'</td><td><input type="text" name="item_name" value="'+name+'">'+name+'</td><td>'+quantity+'</td><td>'+foot+'</td><td>'+price+'</td><td><a href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i class="mi-delete mr-3 mi-2x" style="color: red;"></i></a></td></tr>');
 		counter = parseInt(counter)+1;
 		$("input[name=counter]").val(counter);
 		document.getElementById("add_accounts_form").reset();
@@ -173,8 +179,24 @@
 	function remove(id){
 		$('#list_item_row_'+id+'').remove();
 	}
+	$('#test_form').on('submit', function(e){
+		e.preventDefault();
+		var formData = new FormData($(this)[0]);
+		$.ajax({
+			url: "{{ route('save_accounts')}}",
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+            	console.log(data);
+            }
+		})
+	});
+
+
 	function resetForm() {
-		//alert();
 		document.getElementById("add_accounts_form").reset();
 	}
 </script>
