@@ -19,8 +19,7 @@
 			</div>
 			<hr style="border: 1px solid grey;">
 			<div class="card-body">
-				<form method="post"  id="add_accounts_form">
-					{{ csrf_field() }}
+				<form id="add_accounts_form">
 					<input type="hidden" name="counter" value="1">
 					<div class="row form-group">
 						<div class="col-md-3">
@@ -76,7 +75,7 @@
 							</span>
 						</div>
 						<div class="col-md-9">
-							<input type="text" name="price" id="price" class="form-control">
+							<input type="number" name="price" id="price" class="form-control">
 						</div>
 					</div>
 					<!-- <div class="row">
@@ -120,7 +119,7 @@
 			<hr style="border: 1px solid grey;">
 			<div class="card-body">
 				<div class=" card-table table-responsive shadow-0 mb-0">
-					<form method="post" id="test_form">
+					<form method="post" id="sale_form">
 						{{ csrf_field() }}
 						<table class="table">
 							<thead>
@@ -186,14 +185,25 @@
 	      $('.quantity_text').hide();
 	   }
 	});
-
+	function addCommas(nStr)
+	{
+	    nStr += '';
+	    x = nStr.split('.');
+	    x1 = x[0];
+	    x2 = x.length > 1 ? '.' + x[1] : '';
+	    var rgx = /(\d+)(\d{3})/;
+	    while (rgx.test(x1)) {
+	        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	    }
+	    return x1 + x2;
+	}
 	function add_item(){
 		var counter = $("input[name=counter]").val();
 		var name = $('#item_name').val();
 		var quantity = $('#quantity_input').val();
 		var foot = $('#foot_input').val();
 		var price = $('#price').val();
-		$('#list_item_div').append('<tr id="list_item_row_'+counter+'"><td>'+counter+'</td><td><input type="hidden" name="item_name[]" value="'+name+'">'+name+'</td><td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td><td><input type="hidden" name="foot[]" value="'+foot+'">'+foot+'</td><td><input type="hidden" name="price[]" value="'+price+'">'+price+'</td><td><a href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i class="mi-delete mr-3 mi-2x" style="color: red;"></i></a></td></tr>');
+		$('#list_item_div').append('<tr id="list_item_row_'+counter+'"><td>'+counter+'</td><td><input type="hidden" name="item_name[]" value="'+name+'">'+name+'</td><td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td><td><input type="hidden" name="foot[]" value="'+foot+'">'+foot+'</td><td><input type="hidden" name="price[]" value="'+price+'">Rs: '+addCommas(price)+'</td><td><a href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i class="mi-delete mr-3 mi-2x" style="color: red;"></i></a></td></tr>');
 		counter = parseInt(counter)+1;
 		$("input[name=counter]").val(counter);
 		document.getElementById("add_accounts_form").reset();
@@ -201,7 +211,7 @@
 	function remove(id){
 		$('#list_item_row_'+id+'').remove();
 	}
-	$('#test_form').on('submit', function(e){
+	$('#sale_form').on('submit', function(e){
 		e.preventDefault();
 		var formData = new FormData($(this)[0]);
 		$.ajax({
@@ -212,7 +222,7 @@
             contentType: false,
             processData: false,
             success: function(data){
-            	console.log(data);
+            	location.reload();
             }
 		})
 	});

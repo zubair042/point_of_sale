@@ -18,10 +18,11 @@
 				<table class="table" id="main-datatable-users">
 				    <thead>
 				      <th>ID</th>
-				      <th>Company Name</th>
-				      <th>Type</th>
-				      <th>Phone</th>
-				      <th>Email</th>
+				      <th>Item Name</th>
+				      <th>Quantity/Food</th>
+				      <th>Pending Item</th>
+				      <th>Discount</th>
+				      <th>Total Price</th>
 				      <th></th>
 				    </thead>
 				    <tbody>
@@ -29,14 +30,25 @@
 				    		@foreach($account_detail as $detail)
 				    		<tr>
 				        	<td><span>{{ $detail->id }}</span></td>
-				        	<td><span>{{ $detail->account_name }}</span></td>
-				        	<td><span>{{ $detail->account_type}}</span></td>
-				        	<td><span>{{ $detail->account_phone }}</span></td>
-				        	<td>{{ $detail->account_email }}</td>	
-									<td class="text-right"><a href="{{url('account/edit/'.$detail->id) }}">
-									<i class="icon-pencil mr-3 icon-1x text-success"></i></a>
-									<a onclick="del_account(<?php echo $detail->id; ?>)" href="javascript:;">
-									<i class="icon-bin mr-3 icon-1x text-danger"></i></a></td>
+				        	<td><span>{{ $detail->item_name}}</span></td>
+				        	<td><span>
+				        		Total Quantity:
+				        		<?php $quantity = json_decode($detail->quantity);
+				        		echo array_sum($quantity); 
+				        		?>	
+				        		Total Foot:	
+				        		<?php $foot = json_decode($detail->foot);
+				        		echo array_sum($foot); 
+				        		?>
+				        	</span></td>
+				        	<td><span>{{ $detail->pending_item }}</span></td>
+				        	<td>Rs: {{ number_format($detail->discount) }}</td>	
+				        	<td>Rs: {{ number_format($detail->total_price) }}</td>	
+							<td class="text-right"><!-- <a href="{{url('account/edit/'.$detail->id) }}">
+							<i class="icon-pencil mr-3 icon-1x text-success"></i></a> -->
+							<a onclick="del_account(<?php echo $detail->id; ?>)" href="javascript:;">
+							<i class="icon-bin mr-3 icon-1x text-danger"></i></a></td>
+
 			      		</tr>	
 				    		@endforeach
 				    	@endif
