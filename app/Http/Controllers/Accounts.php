@@ -45,22 +45,26 @@ class Accounts extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input('item_name'));
-        print_r($request);exit;
         $account = new Account;
+
+        $account->item_name = json_encode($request->input('item_name'));
+        $account->quantity = json_encode($request->input('quantity'));
+        $account->foot = json_encode($request->input('foot'));
+        $account->price = json_encode($request->input('price'));
+        
         $account->created_by = Auth::user()->id;
-        $account->id = $request->input('account_id');
-        $account->account_type = $request->input('account_type');
-        $account->account_name = $request->input('account_name');
-        $account->account_address1 = $request->input('address');
-        $account->account_address2 = $request->input('address2');
-        $account->account_city = $request->input('city');
-        $account->account_state = $request->input('state');
-        $account->account_zip = $request->input('zip');
-        $account->account_phone = $request->input('phone');
-        $account->account_fax = $request->input('fax');
-        $account->account_email = $request->input('email');
-        $account->account_notes = $request->input('note');
+        //$account->id = $request->input('account_id');
+        // $account->account_type = $request->input('account_type');
+        // $account->account_name = $request->input('account_name');
+        // $account->account_address1 = $request->input('address');
+        // $account->account_address2 = $request->input('address2');
+        // $account->account_city = $request->input('city');
+        // $account->account_state = $request->input('state');
+        // $account->account_zip = $request->input('zip');
+        // $account->account_phone = $request->input('phone');
+        // $account->account_fax = $request->input('fax');
+        // $account->account_email = $request->input('email');
+        // $account->account_notes = $request->input('note');
         $account->save();
         return redirect('/accounts')->with('success',"Account created successfully");
     }
