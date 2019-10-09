@@ -14,7 +14,7 @@
 		<div class="card">
 			<div class="page-header-content header-elements-inline">
 				<div class="page-title">
-					<h3>Test</h3>
+					<h3>Inventory System</h3>
 				</div>
 			</div>
 			<hr style="border: 1px solid grey;">
@@ -71,11 +71,21 @@
 					<div class="row">
 						<div class="col-md-3">
 							<span class="input-group-text">
-								<p>Cost:</p>
+								<p>Price:</p>
 							</span>
 						</div>
 						<div class="col-md-9">
 							<input type="number" name="price" id="price" class="form-control">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<span class="input-group-text">
+								<p>Product Code:</p>
+							</span>
+						</div>
+						<div class="col-md-9">
+							<input type="number" name="product_code" id="price" class="form-control">
 						</div>
 					</div>
 					<!-- <div class="row">
