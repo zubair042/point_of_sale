@@ -28,7 +28,7 @@
 							</span>
 						</div>
 						<div class="col-md-9">
-							<input type="text" id="item_name" class="form-control" maxlength="8">
+							<input type="text" id="item_name" class="form-control">
 						</div>
 					</div>
 					<div class="row text-center">
@@ -143,7 +143,7 @@
 							</span>
 						</div>
 						<div class="col-md-8">
-							<input type="text" name="discount" class="form-control">
+							<input type="number" name="discount" class="form-control">
 						</div>
 					</div>
 					<div class="row form-group">
@@ -153,7 +153,7 @@
 							</span>
 						</div>
 						<div class="col-md-8">
-							<input type="text" name="pending_item" class="form-control">
+							<input type="number" name="pending_item" class="form-control">
 						</div>
 					</div>
 					<div class="row" style="margin: 20px 0">
