@@ -79,7 +79,7 @@
 							<input type="text" name="price" id="price" class="form-control">
 						</div>
 					</div>
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-md-3">
 							<span class="input-group-text">
 								<p>Discount:</p>
@@ -98,12 +98,12 @@
 						<div class="col-md-9">
 							<input type="text" name="pending" class="form-control">
 						</div>
-					</div>
-					<div class="row text-center">
+					</div> -->
+					<div class="row text-center" style="margin: 20px 0">
 						<div class="col-md-12">
-							<button type="submit" class="btn btn-success legitRipple"><i class="icon-checkmark mr-2"></i>Total</button>
-							<button type="button" class="btn btn-danger legitRipple" onclick="resetForm();"><i class="icon-reset mr-2"></i>Reset</button>
+							<!-- <button type="submit" class="btn btn-success legitRipple"><i class="icon-checkmark mr-2"></i>Total</button> -->
 							<button type="button" onclick="add_item();" class="btn btn-primary legitRipple"><i class="icon-arrow-up-right32 mr-2"></i>Add Item</button>
+							<button type="button" class="btn btn-danger legitRipple" onclick="resetForm();"><i class="icon-reset mr-2"></i>Reset</button>
 						</div> 
 					</div>
 				</form>
@@ -137,7 +137,31 @@
 									
 							</tbody>
 						</table>
-						<button type="submit" >submit</button>
+						<div class="row" style="margin-top: 25px;">
+						<div class="col-md-2 offset-md-1">
+							<span class="input-group-text">
+								<p>Discount:</p>
+							</span>
+						</div>
+						<div class="col-md-8">
+							<input type="text" name="discount" class="form-control">
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-2 offset-md-1">
+							<span class="input-group-text">
+								<p>Pending Item:</p>
+							</span>
+						</div>
+						<div class="col-md-8">
+							<input type="text" name="pending_item" class="form-control">
+						</div>
+					</div>
+					<div class="row" style="margin: 20px 0">
+						<div class="col-md-12 text-center">
+							<button type="submit" class="btn btn-success legitRipple text"><i class="icon-checkmark mr-2"></i>Total</button>
+						</div>
+					</div>
 					</form>
 				</div>
 			</div>

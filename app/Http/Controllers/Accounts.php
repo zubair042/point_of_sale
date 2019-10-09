@@ -51,6 +51,8 @@ class Accounts extends Controller
         $account->quantity = json_encode($request->input('quantity'));
         $account->foot = json_encode($request->input('foot'));
         $account->price = json_encode($request->input('price'));
+        $account->discount = $request->input('discount');
+        $account->pending_item = $request->input('pending_item');
         
         $account->created_by = Auth::user()->id;
         //$account->id = $request->input('account_id');
