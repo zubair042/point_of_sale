@@ -7,7 +7,7 @@
 		<div class="card">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="media bg-primary">
+					<div class="media bg-secondary">
 						<div class="page-header-content">
 							<p><h2 class="text-white" >Results for "Registered Accounts"</h2></p>
 						</div>
