@@ -53,30 +53,30 @@ $user_role = DB::table('user_roles')
     <!-- /theme JS files -->
 
     <style type="text/css">
-.hide {
-	display: none;
-}
-</style>
+      .hide {
+	      display: none;
+      }
+    </style>
     </head>
 
-    <body>
+  <body>
 
 <!-- Main navbar -->
 <div class="navbar navbar-expand-md navbar-dark navbar-static" style="background-color: #263238;">
-      <div class="navbar-brand"> <img src="" alt=""> </div>
-      <div class="d-md-none">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile"> <i class="icon-tree5"></i> </button>
-    <button class="navbar-toggler sidebar-mobile-main-toggle" type="button"> <i class="icon-paragraph-justify3"></i> </button>
-  </div>
+    <div class="navbar-brand"> <img src="" alt=""> </div>
+    <div class="d-md-none">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile"> <i class="icon-tree5"></i> </button>
+      <button class="navbar-toggler sidebar-mobile-main-toggle" type="button"> <i class="icon-paragraph-justify3"></i> </button>
+    </div>
       <div class="collapse navbar-collapse" id="navbar-mobile">
-    <ul class="navbar-nav">
+        <ul class="navbar-nav">
           <li class="nav-item"> <a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block"> <i class="icon-paragraph-justify3"></i> </a> </li>
         </ul>
-    <ul class="navbar-nav ml-md-auto">
+        <ul class="navbar-nav ml-md-auto">
           <li class="nav-item"> <span class="navbar-text ml-md-3"> <span class=""></span> </span> </li>
           <li class="nav-item"> </li>
           <li class="nav-item dropdown dropdown-user"> <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown"> <span>{{ Auth::user()->first_name. " ".Auth::user()->last_name }}</span> </a>
-        <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-menu dropdown-menu-right">
               <p class="dropdown-item">You are login as {{ $user_role->description }}</p>
               <div class="dropdown-divider"></div>
               <?php if (Auth::user()->user_role != 4) { ?>
@@ -88,9 +88,9 @@ $user_role = DB::table('user_roles')
             {{ csrf_field() }}
           </form>-->
             </div>
-      </li>
+          </li>
         </ul>
-  </div>
+      </div>
     </div>
 <!-- /main navbar --> 
 
@@ -109,42 +109,42 @@ $user_role = DB::table('user_roles')
     <div class="sidebar-content"> 
           <!-- Main navigation -->
           <div class="card card-sidebar-mobile">
-        <ul class="nav nav-sidebar" data-nav-type="accordion">
+            <ul class="nav nav-sidebar" data-nav-type="accordion">
               <!-- Main -->
-              <li class="nav-item nav-item-submenu <?php if (!in_array('reports', $roles)) {
-                                                                    echo 'hide';
-                                                                } ?>"> <a href="#" class="nav-link"><i class="icon-copy"></i> <span>Reports</span></a>
-            <ul class="nav nav-group-sub" data-submenu-title="Reports">
+              <li class="nav-item nav-item-submenu <?php if (!in_array('reports', $roles)) {echo 'hide';} ?>"> <a href="#" class="nav-link"><i 
+                class="icon-copy"></i> <span>Reports</span></a>
+                <ul class="nav nav-group-sub" data-submenu-title="Reports">
                   <li class="nav-item"><a href="{{ url('reports') }}" class="nav-link active">View All Reports</a></li>
                   <li class="nav-item <?php if (!in_array('add_report', $roles)){ echo 'hide'; } ?>"><a href="{{ url('report/add') }}" class="nav-link">Add New</a></li>
                 </ul>
-          </li>
-              <li class="nav-item nav-item-submenu <?php if (!in_array('users', $roles)) {
-                                                                    echo 'hide';
-                                                                } ?>"> <a href="#" class="nav-link"><i class="icon-users"></i> <span>Users</span></a>
-            <ul class="nav nav-group-sub" data-submenu-title="Users">
+              </li>
+              <li class="nav-item nav-item-submenu <?php if (!in_array('users', $roles)) {echo 'hide';} ?>"> <a href="#" class="nav-link"><i  
+                class="icon-users"></i> <span>Users</span></a>
+                <ul class="nav nav-group-sub" data-submenu-title="Users">
                   <li class="nav-item"><a href="{{ url('users') }}" class="nav-link active">View All Users</a></li>
                   <li class="nav-item"><a href="{{ url('user/add') }}" class="nav-link">Add New</a></li>
                 </ul>
-          </li>
-              <li class="nav-item nav-item-submenu <?php if (!in_array('accounts', $roles)) {
-                                                                    echo 'hide';
-                                                                } ?>"> <a href="#" class="nav-link"><i class="icon-copy"></i> <span>Accounts</span></a>
-            <ul class="nav nav-group-sub" data-submenu-title="Customers">
+              </li>
+              <li class="nav-item nav-item-submenu <?php if (!in_array('accounts', $roles)) {echo 'hide';} ?>"> <a href="#" class="nav-link"><i   class="icon-copy"></i> <span>Accounts</span></a>
+                <ul class="nav nav-group-sub" data-submenu-title="Customers">
                   <li class="nav-item"><a href="{{ url('accounts') }}" class="nav-link active">View All Accounts</a></li>
                   <li class="nav-item"><a href="{{ url('account/add') }}" class="nav-link">Add New</a></li>
                 </ul>
-          </li>
-              <li class="nav-item nav-item-submenu <?php if (!in_array('users', $roles)) {
-                                                                    echo 'hide';
-                                                                } ?>"> <a href="#" class="nav-link"><i class="icon-location4"></i> <span>Location</span></a>
-            <ul class="nav nav-group-sub" data-submenu-title="Location">
-                  <li class="nav-item"><a href="{{ url('location') }}" class="nav-link active">View All Locations</a></li>
+              </li>
+              <li class="nav-item nav-item-submenu <?php if (!in_array('users', $roles)) {echo 'hide';} ?>"> <a href="#" class="nav-link"><i class="icon-location4"></i> <span>Location</span></a>
+                <ul class="nav nav-group-sub" data-submenu-title="Location">
+                  <li class="nav-item"><a href="{{ url('location') }}" class="nav-link active">View All</a></li>
                   <li class="nav-item"><a href="{{ url('location/add') }}" class="nav-link">Add New</a></li>
                 </ul>
-          </li>
+              </li>
+              <li class="nav-item nav-item-submenu"> <a href="#" class="nav-link"><i class="icon-location4"></i> <span>Inventory</span></a>
+                <ul class="nav nav-group-sub" data-submenu-title="Location">
+                  <li class="nav-item"><a href="{{ url('inventory') }}" class="nav-link active">View All</a></li>
+                  <li class="nav-item"><a href="{{ url('inventory/add') }}" class="nav-link">Add New</a></li>
+                </ul>
+              </li>
             </ul>
-      </div>
+          </div>
           <!-- /main navigation --> 
         </div>
     <!-- /sidebar content --> 
