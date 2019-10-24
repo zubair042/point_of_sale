@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Inventry extends Model
+class Inventory extends Model
 {
-    //
+    protected $table = 'inventory';
 }

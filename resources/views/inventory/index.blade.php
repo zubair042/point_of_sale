@@ -25,20 +25,26 @@
 				      <th></th>
 				    </thead>
 				    <tbody>
-				    	<tr>
-				        	<td><span></span></td>
-				        	<td><span></span></td>
+				    	@if(count($inventory_detail) > 0)
+				    		@foreach($inventory_detail as $detail)
+				    		<tr>
+				        	<td><span>{{ $detail->id }}</span></td>
+				        	<td><span>{{ $detail->item_name}}</span></td>
 				        	<td><span>
 				        		
 				        	</span></td>
-				        	<td><span></span></td>
-				        	<td>Rs: </td>	
-				        	<td>Rs: </td>	
-							<td class="text-right"><!-- <a href="">
+				        	<td><span>{{ $detail->pending_item }}</span></td>
+				        	<td>Rs: {{ number_format($detail->discount) }}</td>	
+				        	<td>Rs: {{ number_format($detail->total_price) }}</td>	
+							<td class="text-right"><!-- <a href="{{url('account/edit/'.$detail->id) }}">
 							<i class="icon-pencil mr-3 icon-1x text-success"></i></a> -->
-							<a onclick="" href="javascript:;">
+							<a onclick="del_inventory(<?php echo $detail->id; ?>)" href="javascript:;">
 							<i class="icon-bin mr-3 icon-1x text-danger"></i></a></td>
+
 			      		</tr>	
+				    		@endforeach
+				    	@endif
+			      		
 				    </tbody>
 			  	</table>
 			</div>
@@ -66,21 +72,21 @@
 	}
 });
 
-// function del_account(id){ 
-// 	if (confirm('Are you sure you want to delete')) {
-// 		$.ajax({
-// 			type: "post",
-// 			url: "{{ route('destroy-account') }}",
-// 			data: {'id': id, "_token": "{{ csrf_token() }}"},
-// 			success:function(data){
-// 				alert('Account deleted successfully!');
-// 				location.reload();
-// 			}
-// 		})
-// 	}else{
-// 		alert('Delete Cancel');
-// 	}
-// }
+function del_inventory(id){ 
+	if (confirm('Are you sure you want to delete')) {
+		$.ajax({
+			type: "post",
+			url: "{{ route('destroy-inventory') }}",
+			data: {'id': id, "_token": "{{ csrf_token() }}"},
+			success:function(data){
+				alert('Account deleted successfully!');
+				location.reload();
+			}
+		})
+	}else{
+		alert('Delete Cancel');
+	}
+}
 
 </script>
 

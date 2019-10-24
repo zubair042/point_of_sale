@@ -27,8 +27,10 @@ Route::group(['middleware' => ['email.auth']], function () {
 	Route::get('/location/add','Locations@create');
 	Route::post('/location/add','Locations@store')->name('save_location');
 
-	Route::get('/inventory','Inventory@index');
-	Route::get('/inventory/add','Inventory@create');
+	Route::get('/inventory','Inventories@index');
+	Route::get('/inventory/add','Inventories@create');
+	Route::post('/inventory/destroy','Inventories@destroy')->name('destroy-inventory');
+	Route::post('/add_inventory','Inventories@store')->name('save_inventory');
 
 	Route::get('/accounts','Accounts@index');
 	Route::get('/account/add','Accounts@create');
