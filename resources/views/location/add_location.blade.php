@@ -78,26 +78,6 @@
 							<input type="number" name="price" id="price" class="form-control">
 						</div>
 					</div>
-					<!-- <div class="row">
-						<div class="col-md-3">
-							<span class="input-group-text">
-								<p>Discount:</p>
-							</span>
-						</div>
-						<div class="col-md-9">
-							<input type="text" name="discount" class="form-control">
-						</div>
-					</div>
-					<div class="row form-group">
-						<div class="col-md-3">
-							<span class="input-group-text">
-								<p>Pending Item:</p>
-							</span>
-						</div>
-						<div class="col-md-9">
-							<input type="text" name="pending" class="form-control">
-						</div>
-					</div> -->
 					<div class="row text-center" style="margin: 20px 0">
 						<div class="col-md-12">
 							<!-- <button type="submit" class="btn btn-success legitRipple"><i class="icon-checkmark mr-2"></i>Total</button> -->
