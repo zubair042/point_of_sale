@@ -14,7 +14,7 @@
 		<div class="card">
 			<div class="page-header-content header-elements-inline">
 				<div class="page-title">
-					<h3>Test</h3>
+					<h3>Purchase Form</h3>
 				</div>
 			</div>
 			<hr style="border: 1px solid grey;">
@@ -99,7 +99,7 @@
 			<hr style="border: 1px solid grey;">
 			<div class="card-body">
 				<div class=" card-table table-responsive shadow-0 mb-0">
-					<form method="post" id="sale_form">
+					<form method="post" id="purchase_form">
 						{{ csrf_field() }}
 						<table class="table">
 							<thead>
@@ -112,7 +112,7 @@
 									<th>Action</th>
 								</tr>
 							</thead>
-							<tbody id="list_item_div">
+							<tbody id="list_item_div_purchase">
 									
 							</tbody>
 						</table>
@@ -149,6 +149,35 @@
 </div>
 
 <script type="text/javascript">
+
+	function addCommas(nStr) {
+	    nStr += '';
+	    x = nStr.split('.');
+	    x1 = x[0];
+	    x2 = x.length > 1 ? '.' + x[1] : '';
+	    var rgx = /(\d+)(\d{3})/;
+	    while (rgx.test(x1)) {
+	        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	    }
+	    return x1 + x2;
+	}
+
+	function add_item(){
+		var counter = $("input[name=counter]").val();
+		var name = $('#item_name').val();
+		var quantity = $('#quantity_input').val();
+		var foot = $('#foot_input').val();
+		var price = $('#price').val();
+		$('#list_item_div_purchase').append('<tr id="list_item_row_'+counter+'"><td>'+counter+'</td><td><input type="hidden" name="item_name[]" value="'+name+'">'+name+'</td><td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td><td><input type="hidden" name="foot[]" value="'+foot+'">'+foot+'</td><td><input type="hidden" name="price[]" value="'+price+'">Rs: '+addCommas(price)+'</td><td><a href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i class="mi-delete mr-3 mi-2x" style="color: red;"></i></a></td></tr>');
+		counter = parseInt(counter)+1;
+		$("input[name=counter]").val(counter);
+		document.getElementById("add_accounts_form").reset();
+	}
+
+	function remove(id){
+		$('#list_item_row_'+id+'').remove();
+	}
+
 	$('.form-check-input-switch').bootstrapSwitch();
 	$('.select_select2_select2').select2({
 		minimumResultsForSearch: Infinity
@@ -157,6 +186,23 @@
 	function resetForm() {
 		document.getElementById("add_location_form").reset();
 	}
+
+	$('#purchase_form').on('submit', function(e){
+		e.preventDefault();
+		var formData = new FormData($(this)[0]);
+		$.ajax({
+			url: "{{ route('save_location')}}",
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data){
+            	console.log(e);
+            	location.reload();
+            }
+		})
+	});
 
 	$('#quantity, #foot').change(function () {
 	   if (this.id == 'quantity') {
