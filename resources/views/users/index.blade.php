@@ -13,7 +13,7 @@ $user_role = DB::table('user_roles')
 			<div class="card">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="media bg-primary">
+						<div class="media bg-secondary">
 							<div class="page-header-content">
 								<p><h2 class="text-white">WHEEL / TIRE USERS REPORT</h2></p>
 							</div>
@@ -26,7 +26,6 @@ $user_role = DB::table('user_roles')
 					      <th>ID</th>
 					      <th>Email</th>
 					      <th>Full Name</th>
-					      <th>Company</th>
 					      <th>User Role</th>
 					      <th>Date</th>
 					      <th></th>
@@ -38,7 +37,6 @@ $user_role = DB::table('user_roles')
 					        	<td><span>{{$detail->id}}</span></td>
 					        	<td><span>{{$detail->email}}</span></td>
 					        	<td><span><?php echo $detail->first_name." ".$detail->last_name;?></span></td>
-					        	<td>{{ $detail->account_name }}</td>
 					        	<td>{{ $detail->description }}</td>
 								<td>{{date("Y-M-d", strtotime($detail->created_at))}}</td>
 								@if ($user_role->id == 1)
@@ -67,7 +65,7 @@ $user_role = DB::table('user_roles')
 	columnDefs: [{ 
 		orderable: false,
 		//width: 100,
-		targets: [ 6 ]
+		targets: [ 5 ]
 	}],
 	dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
 	language: {
