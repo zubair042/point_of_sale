@@ -37,41 +37,6 @@
 						</div>
 					</div>
 				</div>
-				<?php if (isset($user_comapany_name) && $user_comapany_name->user_role == 2) { ?>
-					<div class="row">
-						<div class="col-md-2 offset-md-3">
-							<span class="input-group-text">
-								<p>Company Name</p>
-							</span>
-						</div>
-						<div class="col-md-3">
-							<select class="custom-select" name="account_id">
-								@if(count($customers) > 0)
-								@foreach($customers as $customer)
-								<option value="{{ $customer->id }}"><span>{{ $customer->account_name }}</span></option>
-								@endforeach
-								@endif
-							</select>
-						</div>
-					</div>
-				<?php } else { ?>
-					<div class="row">
-						<div class="col-md-2 offset-md-3">
-							<span class="input-group-text">
-								<p>Company Name</p>
-							</span>
-						</div>
-						<div class="col-md-3">
-							<select class="custom-select" name="account_id">
-								@if(count($customers) > 0)
-								@foreach($customers as $customer)
-								<option value="{{ $customer->id }}"><span>{{ $customer->account_name }}</span></option>
-								@endforeach
-								@endif
-							</select>
-						</div>
-					</div>
-				<?php } ?>
 				<div class="row">
 					<div class="col-md-2 offset-md-3">
 						<span class="input-group-text">
@@ -79,7 +44,7 @@
 						</span>
 					</div>
 					<div class="col-md-3">
-						<select class="custom-select1" id="set_location" onchange="setLocation()" name="user_role">
+						<select class="custom-select1" id="set_location" name="user_role">
 							@if(count($user_roles) > 0)
 							@foreach($user_roles as $role)
 							<option value="{{ $role->id}}"><span>{{ $role->description }}</span></option>
@@ -106,34 +71,6 @@
 					</div>
 					<div class="col-md-3">
 						<input type="text" name="last_name" class="form-control">
-					</div>
-				</div>
-				<div id="manager_location" style="display: none;">
-					<div class="row">
-						<div class="col-md-2 offset-md-3">
-							<span class="input-group-text">
-								<p>Location</p>
-							</span>
-						</div>
-						<div class="col-md-3">
-							<!-- <div class="form-group">
-								<label>Default select</label>
-								<select class="form-control multiselect" multiple="multiple" data-fouc>
-									<option value="cheese">Cheese</option>
-									<option value="tomatoes">Tomatoes</option>
-									<option value="mozarella">Mozzarella</option>
-									<option value="mushrooms">Mushrooms</option>
-								</select>
-							</div> -->
-							<select class="form-control multiselect" name="location_id[]" multiple="multiple">
-								@if(count($locations) > 0)
-								@foreach($locations as $location)
-								<option value="{{ $location->id }}"><span>{{ $location->location_name }}</span></option>
-								@endforeach
-								@endif
-							</select>
-						</div>
-						
 					</div>
 				</div>
 				<div class="row">
@@ -186,14 +123,6 @@
 		document.getElementById("add_user_form").reset();
 	}
 
-	function setLocation() {
-		var type = $('#set_location').val();
-		if (type == 3) {
-			$('#manager_location').css('display', 'block');
-		} else {
-			$('#manager_location').css('display', 'none');
-		}
-	}
 </script>
 
 @endsection

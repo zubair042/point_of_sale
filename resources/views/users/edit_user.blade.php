@@ -64,12 +64,12 @@
 						</span>
 					</div>
 					<div class="col-md-3">
-						<select class="custom-select1" id="set_location" onchange="setLocation()" name="user_role">
+						<select class="custom-select1" id="set_location" name="user_role">
 							@if(count($user_roles) > 0)
 							@foreach($user_roles as $role)
 							<option value="{{ $role->id }}" <?php if ($role->id == $user->user_role) {
-																echo 'selected="selected"';
-															} ?>>
+									echo 'selected="selected"';
+								} ?>>
 								<span>{{ $role->description }}</span>
 							</option>
 							@endforeach
@@ -165,15 +165,7 @@
 		document.getElementById("adit_user_form").reset();
 	}
 	$('.multiselect').multiselect();
-
-	function setLocation(){
-		var type = $('#set_location').val();
-		if (type != 3) {
-			$('#manager_location').hide();
-		}else if(type == 3){
-			$('#manager_location').show();
-		}
-	}
+	
 </script>
 
 @endsection
