@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; 
 
 use Illuminate\Http\Request;
 use App\Location;
@@ -26,9 +26,9 @@ class Locations extends Controller
         if (Auth::user()->user_role != 1) { //Other than Global Admin
             $account_id = Auth::user()->account_id;
             $location_detail = DB::table('locations')
-                                ->join('accounts',"locations.account_id","=","accounts.id")
+                                //->join('accounts',"locations.account_id","=","accounts.id")
                                 ->where('locations.account_id',$account_id)
-                                ->select('locations.*','accounts.account_name')
+                                ->select('locations.*')
                                 ->get();
 
             foreach($location_detail as $key=>$val):
@@ -37,8 +37,8 @@ class Locations extends Controller
         }
         else{
             $location_detail = DB::table('locations')
-                                ->join('accounts','locations.account_id','=','accounts.id')
-                                ->select('locations.*','accounts.account_name')
+                                //->join('accounts','locations.account_id','=','accounts.id')
+                                ->select('locations.*')
                                 ->get();  
                                 
             foreach($location_detail as $key=>$val):
@@ -73,29 +73,16 @@ class Locations extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
-        $user->account_id   = $request->input('account_id');
-        $user->location_id  = 0;
-        $user->email        = $request->input('email');
-        $user->user_role    = 4;
-        $user->first_name   = $request->input('username');
-        $user->last_name    = '';
-        $user->password     = bcrypt($request->input('password'));
-        $user->created_by   = Auth::user()->id;
-        $user->save();
-
         $location = new Location;
-        $location->created_by       = Auth::user()->id;
-        $location->account_id       = $request->input('account_id');
-        $location->user_id          = $user->id;
-        $location->location_name    = $request->input('location_name');
-        $location->user_name        = $request->input('username');
-        $location->email            = $request->input('email');
-        $location->password         = bcrypt($request->input('password'));
-        $location->address          = $request->input('address');
-        $location->city             = $request->input('city');
-        $location->state            = $request->input('state');
-        $location->zip              = $request->input('zip');
+        //$dd($location);
+        //$account->item_name = json_encode($request->input('item_name'));
+        $location->item_name = implode(",", $request->input('item_name'));
+        $location->quantity = json_encode($request->input('quantity'));
+        $location->foot = json_encode($request->input('foot'));
+        $location->price = json_encode($request->input('price'));
+        $total_price = array_sum($request->input('price'));
+
+        $location->created_by = Auth::user()->id;
         $location->save();
 
         return redirect('/location')->with('success',"Location added successfully");
