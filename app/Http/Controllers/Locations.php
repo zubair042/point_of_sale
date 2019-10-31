@@ -26,9 +26,9 @@ class Locations extends Controller
         if (Auth::user()->user_role != 1) { //Other than Global Admin
             $account_id = Auth::user()->account_id;
             $location_detail = DB::table('locations')
-                                ->join('accounts',"locations.account_id","=","accounts.id")
+                                //->join('accounts',"locations.account_id","=","accounts.id")
                                 ->where('locations.account_id',$account_id)
-                                ->select('locations.*','accounts.account_name')
+                                ->select('locations.*')
                                 ->get();
 
             foreach($location_detail as $key=>$val):
@@ -37,8 +37,8 @@ class Locations extends Controller
         }
         else{
             $location_detail = DB::table('locations')
-                                ->join('accounts','locations.account_id','=','accounts.id')
-                                ->select('locations.*','accounts.account_name')
+                                //->join('accounts','locations.account_id','=','accounts.id')
+                                ->select('locations.*')
                                 ->get();  
                                 
             foreach($location_detail as $key=>$val):

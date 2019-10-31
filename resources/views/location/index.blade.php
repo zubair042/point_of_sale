@@ -6,7 +6,7 @@
 			<div class="card">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="media bg-primary">
+						<div class="media bg-secondary">
 							<div class="page-header-content">
 								<p><h2 class="text-white">Results for "Latest Registered Locations"</h2></p>
 							</div>
@@ -22,24 +22,7 @@
 					      <th>Manager</th>
 					      <th></th>
 					    </thead>
-					    <tbody>
-					    	@if(count($location_detail) > 0)
-				    			@foreach($location_detail as $detail)
-							    	<tr>
-							        	<td><span>{{ $detail->id }}</span></td>
-							        	<td><span>{{ $detail->location_name }}</span></td>
-							        	<td><span>{{ $detail->account_name }}</span></td>
-							        	<td><span>
-							        		@foreach($detail->users as $manager)
-							        			{{ $manager->first_name." ".$manager->last_name }} ,
-							        		@endforeach
-
-							        	</span></td>
-							        	<td align="right"><a href="{{ url('/location/edit/'.$detail->id) }}"><i class="icon-pencil mr-3 icon-1x text-success"></i></a><a onclick="del_location(<?php echo $detail->id.",".$detail->user_id; ?>)" href="javascript:;"><i class="icon-bin mr-3 icon-1x text-danger"></i></a></td>
-						      		</tr>
-				      			@endforeach
-				    		@endif
-					    </tbody>
+					    
 				  	</table>
 				</div>
 			</div>
