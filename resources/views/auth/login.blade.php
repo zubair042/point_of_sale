@@ -1,92 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-<title>Wheel Tire | Login</title>
-
-<!-- Global stylesheets -->
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-<link href="{{asset('global_assets/css/icons/icomoon/styles.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/css/bootstrap_limitless.min.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/css/layout.min.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/css/components.min.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/css/colors.min.css')}}" rel="stylesheet" type="text/css">
-<!-- /global stylesheets -->
-
-<!-- Core JS files -->
-<script src="{{asset('global_assets/js/main/jquery.min.js')}}"></script>
-<script src="{{asset('global_assets/js/main/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('global_assets/js/plugins/loaders/blockui.min.js')}}"></script>
-<!-- /core JS files -->
-
-<!-- Theme JS files -->
-<script src="{{asset('global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
-<script src="{{asset('assets/js/app.js')}}"></script>
-<!-- /theme JS files -->
-
+	<title>POS | Lgoin</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{{asset('login_template/images/icons/favicon.ico')}}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('login_template/vendor/bootstrap/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('login_template/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('login_template/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('login_template/vendor/animate/animate.css')}}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{asset('login_template/vendor/css-hamburgers/hamburgers.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('login_template/vendor/animsition/css/animsition.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('login_template/vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{asset('login_template/vendor/daterangepicker/daterangepicker.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('login_template/css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('login_template/css/main.css')}}">
+<!--===============================================================================================-->
 </head>
-<style type="text/css">
-body {
-  background-image: url("{{ asset('global_assets/images/background.png') }}"); 
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-  height: 100%;
-}
-.border-slate-300 {
-	border-color: #F37333 !important;
-}
-</style>
 <body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('{{asset('login_template/images/bg-01.jpg')}}');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Account Login
+				</span>
+				<form class="login100-form validate-form p-b-33 p-t-5" action="{{ route('login') }}" method="post">
+					{{ csrf_field() }}
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="email" name="email" placeholder="Enter your email">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
 
-<div class="page-content"> 
-  
-  <!-- Main content --> 
-  <div class="content-wrapper"> 
-    
-      <div class="content d-flex align-items-center justify-content-center">
-        <!-- <div class="col-md-4">
-        </div> -->
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-header header-elements-inline" style="background: #708bea;height: 95px;">
-            </div>
-            <div class="card-body" style="margin-top: 40px;">
-              <div class="text-center" style="font-size: 25px;margin-bottom: 35px;">
-                <span class="font-weight-semibold" style="margin-right: 25px;color: #96a2ce;">Log In</span>
-              </div>
-              <form action="{{ route('login') }}" method="POST">
-                {{ csrf_field() }}
-              <div class="form-group">
-                <label for="name">Email Address</label>
-                <input type="text" class="form-control" name="email" placeholder="Enter your email">
-                @if ($errors->has('email'))
-                  <span class="help-block">
-                      <strong style="color: red;">{{ $errors->first('email') }}</strong>
-                  </span>
-                @endif
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" placeholder="Enter password ">
-                @if ($errors->has('password'))
-                  <span class="help-block">
-                      <strong style="color: red;">{{ $errors->first('password') }}</strong>
-                  </span>
-                @endif
-              </div>
-              <div class="text-center" style="margin-top: 45px;">
-                <input type="submit" style="background: #6178ca;margin-bottom: 15px;" class="btn btn-primary" value="Log in">
-              </div> 
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div> 
-</div>
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn" type="submit">
+							Login
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="{{asset('login_template/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('login_template/vendor/animsition/js/animsition.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('login_template/vendor/bootstrap/js/popper.js')}}"></script>
+	<script src="{{asset('login_template/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('login_template/vendor/select2/select2.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('login_template/vendor/daterangepicker/moment.min.js')}}"></script>
+	<script src="{{asset('login_template/vendor/daterangepicker/daterangepicker.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('login_template/vendor/countdowntime/countdowntime.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('login_template/js/main.js')}}"></script>
 
 </body>
 </html>
