@@ -118,7 +118,7 @@ $user_role = DB::table('user_roles')
                   <li class="nav-item"><a href="{{ url('user/add') }}" class="nav-link">Add New</a></li>
                 </ul>
               </li>
-              <li class="nav-item nav-item-submenu <?php if (!in_array('accounts', $roles)) {echo 'hide';} ?>"> <a href="#" class="nav-link"><i   class="icon-copy"></i> <span>Sale Form</span></a>
+              <li class="nav-item nav-item-submenu <?php if (!in_array('sale_form', $roles)) {echo 'hide';} ?>"> <a href="#" class="nav-link"><i   class="icon-copy"></i> <span>Sale Form</span></a>
                 <ul class="nav nav-group-sub" data-submenu-title="Customers">
                   <li class="nav-item"><a href="{{ url('accounts') }}" class="nav-link active">View All Sales</a></li>
                   <li class="nav-item"><a href="{{ url('account/add') }}" class="nav-link">Add New</a></li>
@@ -130,7 +130,7 @@ $user_role = DB::table('user_roles')
                   <li class="nav-item"><a href="{{ url('location/add') }}" class="nav-link">Add New</a></li>
                 </ul>
               </li>
-              <li class="nav-item nav-item-submenu"> <a href="#" class="nav-link"><i class="icon-location4"></i> <span>Inventory</span></a>
+              <li class="nav-item nav-item-submenu <?php if(!in_array('inventory', $roles)){echo 'hide';} ?>"> <a href="#" class="nav-link"><i class="icon-location4"></i> <span>Inventory</span></a>
                 <ul class="nav nav-group-sub" data-submenu-title="Location">
                   <li class="nav-item"><a href="{{ url('inventory') }}" class="nav-link active">View All</a></li>
                   <li class="nav-item"><a href="{{ url('inventory/add') }}" class="nav-link">Add New</a></li>
