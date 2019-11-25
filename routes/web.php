@@ -26,6 +26,9 @@ Route::group(['middleware' => ['email.auth']], function () {
 	Route::post('/inventory/destroy','Inventories@destroy')->name('destroy-inventory');
 	Route::post('/add_inventory','Inventories@store')->name('save_inventory');
 
+	Route::get('/product','Products@index');
+	Route::get('/product/add','Products@create');
+
 	Route::get('/accounts','Accounts@index');
 	Route::get('/account/add','Accounts@create');
 	Route::get('/account/edit/{id}','Accounts@edit');

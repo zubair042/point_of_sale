@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Inventory;
-use Auth;
-use DB;
 
-class Inventories extends Controller
+class Products extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +13,7 @@ class Inventories extends Controller
      */
     public function index()
     {
-        $inventory_detail = Inventory::all();
-        return view('inventory/index')->with('inventory_detail',$inventory_detail);
+        return view('products/index');
     }
 
     /**
@@ -28,7 +23,7 @@ class Inventories extends Controller
      */
     public function create()
     {
-        return view('inventory/add_inventory');
+        return view('products/add_products');
     }
 
     /**
@@ -39,21 +34,7 @@ class Inventories extends Controller
      */
     public function store(Request $request)
     {
-        $inventory = new Inventory;
-        $inventory->item_name = implode(",", $request->input('item_name'));
-        $inventory->quantity = json_encode($request->input('quantity'));
-        $inventory->foot = json_encode($request->input('foot'));
-        $inventory->price = json_encode($request->input('price'));
-        $inventory->discount = $request->input('discount');
-        $inventory->pending_item = $request->input('pending_item');
-        $total_price = array_sum($request->input('price'));
-
-        $inventory->total_price = $total_price-$request->input('discount');
-        $inventory->product_code = json_encode($request->input('product_code'));
-        $inventory->created_by = Auth::user()->id;
-        $inventory->save();
-        echo 'success';
-        //return redirect('/inventory')->with('success',"Inventory created successfully");
+        
     }
 
     /**
@@ -96,9 +77,8 @@ class Inventories extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        $inventory_id = Inventory::find($_POST['id']);
-        $inventory_id->delete();  
+        //
     }
 }

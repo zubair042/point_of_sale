@@ -8,7 +8,10 @@
 <script src="{{asset('global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
 <script src="{{asset('global_assets/js/demo_pages/form_checkboxes_radios.js')}}"></script>
 <link href="{{asset('global_assets/css/icons/material/icons.css')}}" rel="stylesheet" type="text/css">
-
+<div class="alert bg-success text-white alert-dismissible success" style="display: none">
+        <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+        <span class="font-weight-semibold">Inventory Created Successfully!</span>
+    </div>
 <div class="row">
 	<div class="col-md-5">
 		<div class="card">
@@ -136,8 +139,7 @@
 								<tr>
 									<th>#</th>
 									<th>Item Name</th>
-									<th>Quantity</th>
-									<th>Foot</th>
+									<th>Quantity/Foot</th>
 									<th>Price</th>
 									<th>Product Code</th>
 									<th>Action</th>
@@ -213,14 +215,32 @@
 	    return x1 + x2;
 	}
 
+// <tr id="list_item_row_'+counter+'">
+// <td>'+counter+'</td>
+// <td><input type="hidden" name="item_name[]" value="'+name+'">'+name+'</td>
+// <td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'
+// <input type="hidden" name="foot[]" value="'+foot+'">'+foot+'</td>
+// <td><input type="hidden" name="price[]" value="'+price+'">Rs: '+addCommas(price)+'</td>
+// <td><input type="hidden" name="product_code[]" value="'+product_code+'">'+product_code+'</td>
+// <td><a href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i class="mi-delete mr-3 mi-2x" style="color: red;"></i></a>
+// </td>
+// </tr>
+
+
+
+
+
+
 	function add_item(){
 		var counter = $("input[name=counter]").val();
 		var name = $('#item_name').val();
 		var quantity = $('#quantity_input').val();
+		var newQ = 'Quantity:'+quantity;
 		var foot = $('#foot_input').val();
+		var newF = 'Foot:'+foot;
 		var price = $('#price').val();
 		var product_code = $('#product_code').val();
-		$('#list_item_div').append('<tr id="list_item_row_'+counter+'"><td>'+counter+'</td><td><input type="hidden" name="item_name[]" value="'+name+'">'+name+'</td><td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td><td><input type="hidden" name="foot[]" value="'+foot+'">'+foot+'</td><td><input type="hidden" name="price[]" value="'+price+'">Rs: '+addCommas(price)+'</td><td><input type="hidden" name="product_code[]" value="'+product_code+'">'+product_code+'</td><td><a href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i class="mi-delete mr-3 mi-2x" style="color: red;"></i></a></td></tr>');
+		$('#list_item_div').append('<tr id="list_item_row_'+counter+'"><td>'+counter+'</td><td><input type="hidden" name="item_name[]" value="'+name+'">'+name+'</td><td><input type="hidden" name="quantity[]" value="'+quantity+'">'+newQ+'<input type="hidden" name="foot[]" value="'+foot+'">'+newF+'</td><td><input type="hidden" name="price[]" value="'+price+'">Rs: '+addCommas(price)+'</td><td><input type="hidden" name="product_code[]" value="'+product_code+'">'+product_code+'</td><td><a href="javascript:;" onclick="remove('+counter+')" class="text-default font-weight-semibold letter-icon-title"><i class="mi-delete mr-3 mi-2x" style="color: red;"></i></a></td></tr>');
 		counter = parseInt(counter)+1;
 		$("input[name=counter]").val(counter);
 		document.getElementById("add_inventory_form").reset();
@@ -241,9 +261,13 @@
             contentType: false,
             processData: false,
             success: function(data){
-            	console.log(data);
-            	return false;
-            	location.reload();
+            	if (data == 'success') {
+            		$('.success').show('fast');
+            	}
+            	setTimeout(function(){
+            		location.reload();
+            		$('.success').hide('fast');
+            	}, 2000);
             }
 		})
 	});

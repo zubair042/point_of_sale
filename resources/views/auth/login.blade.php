@@ -27,6 +27,18 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('login_template/css/main.css')}}">
 <!--===============================================================================================-->
 </head>
+
+<style type="text/css">
+.login-btn {
+	background-color: #444444; 
+	color: white;
+}
+.login-btn:hover {
+	background-color: gray;
+	color: white;
+}
+</style>
+
 <body>
 	
 	<div class="limiter">
@@ -40,15 +52,29 @@
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input class="input100" type="email" name="email" placeholder="Enter your email">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+						
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+						
+					</div>
+					<div class="container-login100-form-btn m-t-32">
+						@if ($errors->has('email'))
+		                  <span class="help-block">
+		                      <strong style="color: red;font-size: 14px;">{{ $errors->first('email') }}</strong>
+		                  </span>
+		                @endif
+		                @if ($errors->has('password'))
+		                  <span class="help-block">
+		                      <strong style="color: red;font-size: 14px;">{{ $errors->first('password') }}</strong>
+		                  </span>
+		                @endif	
 					</div>
 
 					<div class="container-login100-form-btn m-t-32">
-						<button class="login100-form-btn" type="submit">
+						<button class="btn login-btn" type="submit">
 							Login
 						</button>
 					</div>

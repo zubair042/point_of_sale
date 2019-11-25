@@ -124,16 +124,22 @@ $user_role = DB::table('user_roles')
                   <li class="nav-item"><a href="{{ url('account/add') }}" class="nav-link">Add New</a></li>
                 </ul>
               </li>
-              <li class="nav-item nav-item-submenu <?php if (!in_array('users', $roles)) {echo 'hide';} ?>"> <a href="#" class="nav-link"><i class="icon-location4"></i> <span>Purchase</span></a>
+              <li class="nav-item nav-item-submenu <?php if (!in_array('users', $roles)) {echo 'hide';} ?>"> <a href="#" class="nav-link"><i class="icon-cart2"></i> <span>Purchase</span></a>
                 <ul class="nav nav-group-sub" data-submenu-title="Location">
                   <li class="nav-item"><a href="{{ url('location') }}" class="nav-link active">View All</a></li>
                   <li class="nav-item"><a href="{{ url('location/add') }}" class="nav-link">Add New</a></li>
                 </ul>
               </li>
-              <li class="nav-item nav-item-submenu <?php if(!in_array('inventory', $roles)){echo 'hide';} ?>"> <a href="#" class="nav-link"><i class="icon-location4"></i> <span>Inventory</span></a>
+              <li class="nav-item nav-item-submenu <?php if(!in_array('inventory', $roles)){echo 'hide';} ?>"> <a href="#" class="nav-link"><i class="icon-stack"></i> <span>Inventory</span></a>
                 <ul class="nav nav-group-sub" data-submenu-title="Location">
                   <li class="nav-item"><a href="{{ url('inventory') }}" class="nav-link active">View All</a></li>
                   <li class="nav-item"><a href="{{ url('inventory/add') }}" class="nav-link">Add New</a></li>
+                </ul>
+              </li>
+              <li class="nav-item nav-item-submenu <?php if(!in_array('inventory', $roles)){echo 'hide';} ?>"> <a href="#" class="nav-link"><i class="icon-cube2"></i> <span>Products</span></a>
+                <ul class="nav nav-group-sub" data-submenu-title="Products">
+                  <li class="nav-item"><a href="{{ url('product') }}" class="nav-link active">View All</a></li>
+                  <li class="nav-item"><a href="{{ url('product/add') }}" class="nav-link">Add New</a></li>
                 </ul>
               </li>
             </ul>
